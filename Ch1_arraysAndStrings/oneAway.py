@@ -34,10 +34,13 @@ def check_for_deletion(shorter, longer):
     for char1 in shorter:
         chars[char1] = chars.get(char1,0)+1
 
+    # determine whether longer word has only 1 non-matching char
     found_extra_char = False
     for char2 in longer:
-        # letter does not exist in smaller word
+
+        # if letter does not exist in smaller word
         if chars.get(char2,0) == 0:
+        
             if found_extra_char:
                 return False
             
