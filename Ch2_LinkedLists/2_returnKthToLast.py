@@ -1,4 +1,4 @@
-from linkedList import SinglyLinkedList
+from linkedList import SinglyLinkedList, SinglyLinkedListNode
 
 def return_kth_to_last_counter(ll, k):
     """ Return kth to last node, solution using LL size"""
@@ -48,7 +48,7 @@ def return_kth_to_last_recursion(root, k):
     result = return_kth_to_last_recursion(root.next, k)
     if result == k:
         return root
-    elif not isinstance(result, int): # node is returned from lower level
+    elif isinstance(result, SinglyLinkedListNode): # node from recursion
         return result
     else:
         return result+1
