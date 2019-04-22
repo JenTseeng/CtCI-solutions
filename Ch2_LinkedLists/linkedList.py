@@ -27,19 +27,34 @@ class SinglyLinkedList:
             self.tail = new_node
 
 
-    def removeNode(self, value):
-        """ method to remove certain value from SLL """
+    def removeValue(self, value):
+        """ method to remove node with certain value from SLL """
 
         current = self.head
+        previous = None
         
         while current:
             if current.data == value:
-                current.data = current.next.data
-                current.next = current.next.next
+                if current == self.head and current == self.tail:
+                    self.head = None
+                    self.tail = None
+
+                elif current == self.head:
+                    self.head = current.next
+
+                elif current == self.tail:
+                    self.tail = previous
+
+                else:
+                    current.data = current.next.data
+                    current.next = current.next.next
+                
                 break
 
             else:
+                previous = current
                 current = current.next
+
     
     def printNodes(self):
         """ method to print all node values in SLL """
